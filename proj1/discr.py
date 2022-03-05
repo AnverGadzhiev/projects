@@ -4,7 +4,7 @@ def prob_suff(*suffixes: str) -> float:
     if isinstance(suffixes[0], list):
         suffixes = (*(suffixes[0]), )
     average_iter = 0
-    attemps = 1000
+    attemps = 10000
     suf_len = len(max(suffixes, key=len))
 
     for _ in range(attemps):
@@ -17,16 +17,4 @@ def prob_suff(*suffixes: str) -> float:
 
         average_iter += iter
     
-    return average_iter / attemps
-
-
-def main():
-    suff = ['com', 'ru', 'org']
-    # prob_suff(suff)
-
-    # print(prob_suff(suff))
-    print(prob_suff('com', 'ru', 'org'))
-
- 
-if __name__ == '__main__':
-    main()
+    return 1.0  / (average_iter / attemps)
